@@ -4,8 +4,8 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 
 ## Requirements
 
-1. Python 3 (see below for Linux:)  
-    Just search "tkinter" in your software app/GUI package manager. Or, from the terminal:
+1. [Python 3](https://www.python.org/downloads/)  
+    **On Linux** (ignore on other systems), just search "tkinter" in your software app/GUI package manager. Or, from the terminal:
     - On Arch:
 
     ```sh
@@ -24,7 +24,8 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
     sudo dnf install python3-tkinter
     ```
 
-2. Any soundboard program that allows setting custom shortcuts.
+2. Any soundboard program that allows setting custom shortcuts.  
+   I personally use/recommend [Soundux](https://soundux.rocks/).
 
 ## Installation
 
@@ -50,7 +51,17 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 
 ## Usage
 
-Simply run either `run.sh` or `run.bat` (only run `run.bat` on Windows). You will have to re-run the app upon closing it or upon restarting your computer for it to work.  
+> [!Important]
+> If you change the value of `SOUNDBOARD_HOTKEY` in `main.py`, make sure to also update `output.wav`'s shortcut/hotkey in your soundboard app! (And vice-versa.)
+
+1. Run either `run.sh` or `run.bat` (only run `run.bat` on Windows). You will have to re-run the app upon closing it or upon restarting your computer for it to work.  
+
+2. Press the prompt hotkey (default: `CTRL+ALT+H`), enter anything (don't leave it blank), then press `ENTER` or click "Okay."
+
+3. Open your soundboard app and add a new sound. If your soundboard supports adding a single file as a sound, then add `output.wav` (it'll be in the same folder this entire program is). Otherwise, add this entire program's folder.
+
+4. Add a custom shortcut/hotkey. By default, you should set it to `LEFT_CONTROL+LEFT_ALT+RIGHT_ALT+RIGHT_CONTROL` (press both control keys and both alt keys at the same time).  
+   If you'd like to set this to something else, that's fine—just make sure to update `SOUNDBOARD_HOTKEY`'s value in `main.py`, too! (See the instructions below.)
 
 To configure this program:
 
