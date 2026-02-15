@@ -27,7 +27,7 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 2. Any soundboard program that allows setting custom shortcuts.  
    I personally use/recommend [Soundux](https://soundux.rocks/).
 
-## Installation
+## Installation/Setup
 
 > [!Important]
 > Ensure you have all of the necessary dependancies before following this guide!
