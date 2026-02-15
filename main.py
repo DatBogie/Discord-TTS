@@ -1,3 +1,9 @@
+import wave, sys, threading
+from pynput import keyboard
+from pynput.keyboard import Key
+from tkinter import simpledialog
+from piper import PiperVoice
+
 # You may edit the non-grayed-out text below until you see the line saying STOP.
 
 # List of keys:
@@ -25,12 +31,6 @@ SOUNDBOARD_HOTKEY = [
 TTS_VOICE = "en_US-amy-medium"
 
 # STOP
-
-import wave, sys, threading
-from pynput import keyboard
-from pynput.keyboard import Key
-from tkinter import simpledialog
-from piper import PiperVoice
 
 voice = PiperVoice.load(f"./{TTS_VOICE}.onnx")
 kb = keyboard.Controller()
