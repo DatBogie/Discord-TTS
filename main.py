@@ -50,11 +50,13 @@ def prompt():
     global debounce
     if debounce: return
     debounce = True
-    r = simpledialog.askstring("Discord-TTS","Text to speak:")
-    if r is not None and r != "":
-        with wave.open("output.wav","wb") as wav_file:
-            voice.synthesize_wav(r,wav_file)
-        press_hotkey(SOUNDBOARD_HOTKEY)
+    try:
+        r = simpledialog.askstring("Discord-TTS","Text to speak:")
+        if r is not None and r != "":
+            with wave.open("output.wav","wb") as wav_file:
+                voice.synthesize_wav(r,wav_file)
+            press_hotkey(SOUNDBOARD_HOTKEY)
+    except:pass
     threading.Timer(.2,rdb).start()
 
 def quit():
