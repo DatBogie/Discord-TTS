@@ -1,28 +1,13 @@
-# Discord-TTS
+<div style="display: flex; justify-content: center; align-items: center">
+   <img src="./Discord-TTS.png" width="60px">
+   <h1 style="margin: 0">Discord-TTS</h1>
+</div>
 
 A simple python script that allows you to use TTS in a Discord (or other app's) VC via Soundux (or any other soundboard program that allows setting custom shortcuts).
 
 ## Requirements
 
-1. [Python 3](https://www.python.org/downloads/)  
-    **On Linux** (ignore on other systems), just search "tkinter" in your software app/GUI package manager. Or, from the terminal:
-    - On Arch:
-
-    ```sh
-    sudo pacman -S --needed tk
-    ```
-
-    - On Ubuntu/Mint/other derivatives:
-
-    ```sh
-    sudo apt install --needed python3-tk
-    ```
-
-    - On Fedora:
-
-    ```sh
-    sudo dnf install python3-tkinter
-    ```
+1. [Python 3](https://www.python.org/downloads/)
 
 2. Any soundboard program that allows setting custom shortcuts.  
    I personally use/recommend [Soundux](https://soundux.rocks/).
@@ -68,3 +53,11 @@ To configure this program:
 1. Open `main.py` in a text editor. VSCode is recommended. (If it asks you to use a virtual environment/venv it found, click "Yes.")
 
 2. Follow the instructions provided by the text on lines starting with a `#`; only change the values of variables in all caps.
+
+## Technologies
+
+| Name       | PyPI                                            | Repository                                                           | Function |
+| -          | -                                               | -                                                                    | -        |
+| Piper-TTS  | [pypi.org](https://pypi.org/project/piper-tts/) | [github.com](https://github.com/OHF-Voice/piper1-gpl)                | TTS      |
+| PySide6    | [pypi.org](https://pypi.org/project/PySide6/)   | [code.qt.io](https://code.qt.io/cgit/pyside/pyside-setup.git/about/) | GUI/Tray |
+| pynput     | [pypi.org](https://pypi.org/project/pynput/)    | [github.com](https://github.com/moses-palmer/pynput)                 | Keyboard |

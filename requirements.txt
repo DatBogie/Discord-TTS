@@ -1,2 +1,3 @@
 piper-tts
 pynput
+PySide6
