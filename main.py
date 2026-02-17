@@ -115,7 +115,7 @@ def run():
     try:
         t,r = QInputDialog.getText(win,"Discord-TTS","Text to speak:")
         if r and t != "":
-            with wave.open("output.wav","wb") as wav_file:
+            with wave.open(os.path.join(DATA_PATH,"output.wav"),"wb") as wav_file:
                 voice.synthesize_wav(t,wav_file)
             press_hotkey(SOUNDBOARD_HOTKEY)
     except:pass
