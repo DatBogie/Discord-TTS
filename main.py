@@ -6,7 +6,10 @@ from PySide6.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QInputDialog
 from PySide6.QtGui import QAction, QIcon
 from PySide6.QtCore import QObject, Signal
 
-DATA_PATH = "."
+if getattr(sys,"frozen",False):
+    DATA_PATH = os.path.dirname(sys.executable)
+else:
+    DATA_PATH = os.path.dirname(os.path.abspath(__file__))
 # try:
 #     DATA_PATH = sys._MEIPASS
 # except:pass
