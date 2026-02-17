@@ -1,3 +1,5 @@
 piper-tts
 pynput
 PySide6
+PyYAML
+desktop

@@ -1,4 +1,4 @@
-import wave, threading, sys
+import wave, threading, sys, yaml, os, subprocess
 from pynput import keyboard
 from pynput.keyboard import Key
 from piper import PiperVoice
@@ -6,49 +6,58 @@ from PySide6.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QInputDialog
 from PySide6.QtGui import QAction, QIcon
 from PySide6.QtCore import QObject, Signal
 
-# You may edit the non-grayed-out text below until you see the line saying STOP.
+DATA_PATH = "."
+try:
+    DATA_PATH = sys._MEIPASS
+except:pass
 
-# List of keys:
+CONF_PATH = os.path.join(DATA_PATH,"config.yaml")
+
+if not os.path.exists(CONF_PATH):
+    with open(CONF_PATH, "w") as f:
+        f.write(
+"""# (Incomplete) list of special keys:
 #   -   <ctrl>  :   Control
 #   -   <alt>   :   Alt/Option (mac)
 #   -   <cmd>   :   Windows Key/Super/Meta/CMD (mac)
 
-# Replace text inside quotes, separate each key with a plus.
-PROMPT_HOTKEY = "<ctrl>+<alt>+h"    # Default: "<ctrl>+<alt>+h"
-QUIT_HOTKEY = "<ctrl>+<alt>+x"      # Default: "<ctrl>+<alt>+x"
+# Separate each key with a plus.
+Prompt Hotkey: <ctrl>+<alt>+h
+Quit Hotkey: <ctrl>+<alt>+x
 
-# Use auto-fill for list of available keys.
-# (Type `Key.` (without the "`"s), then press CTRL+SPACE).
-# No quotes; replace the lines between the square brackets ( []s ).
-# Each key should be separated with a comma.
-SOUNDBOARD_HOTKEY = [
-    Key.ctrl_l,
-    Key.alt_l,
-    Key.ctrl_r,
-    Key.alt_r
-]
-"""
-
-# Default:
-[
-    Key.ctrl_l,
-    Key.alt_l,
-    Key.ctrl_r,
-    Key.alt_r
-]
-
-"""
+# List of special keys: 'alt', 'alt_l', 'alt_r', 'alt_gr', 'backspace', 'caps_lock', 'cmd', 'cmd_l', 'cmd_r', 'ctrl', 'ctrl_l', 'ctrl_r', 'delete', 'down', 'end', 'enter', 'esc', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20', 'home', 'left', 'page_down', 'page_up', 'right', 'shift', 'shift_l', 'shift_r', 'space', 'tab', 'up', 'media_play_pause', 'media_stop', 'media_volume_mute', 'media_volume_down', 'media_volume_up', 'media_previous', 'media_next', 'insert', 'menu', 'num_lock', 'pause', 'print_screen', 'scroll_lock'
+Soundboard Hotkey:
+  - ctrl_l
+  - alt_l
+  - ctrl_r
+  - alt_r
 
 # Set this to the same as it is at the end of line 5 in `setup.sh`/`setup.bat`.
 # Don't change it if you didn't change it the setup script.
-TTS_VOICE = "en_US-amy-medium"      # Default: "en_US-amy-medium"
+TTS Voice: en_US-amy-medium"""
+)
 
-# STOP
+with open(CONF_PATH, "r") as f:
+    conf = yaml.safe_load(f)
+
+PROMPT_HOTKEY = conf.get("Prompt Hotkey") or "<ctrl>+<alt>+h"
+QUIT_HOTKEY = conf.get("Quit Hotkey") or "<ctrl>+<alt>+x"
+SOUNDBOARD_HOTKEY = conf.get("Soundboard Hotkey") or [
+    "ctrl_l",
+    "alt_l",
+    "ctrl_r",
+    "alt_r"
+]
+TTS_VOICE = conf.get("TTS Voice") or "en_US-amy-medium"
+
+for i, k in enumerate(SOUNDBOARD_HOTKEY):
+    SOUNDBOARD_HOTKEY[i] = getattr(Key,k,k)
 
 class Bridge(QObject):
     trigger = Signal()
 
 app = QApplication(sys.argv)
+app.setQuitOnLastWindowClosed(False)
 bridge = Bridge()
 win = QWidget()
 win.hide()
@@ -86,6 +95,14 @@ def prompt():
     bridge.trigger.emit()
     threading.Timer(.2,rdb).start()
 
+def open_conf():
+    if sys.platform == "darwin":
+        subprocess.run(["open",CONF_PATH])
+    elif sys.platform == "win32":
+        os.startfile(CONF_PATH)
+    else:
+        subprocess.run(["xdg-open",CONF_PATH])
+
 def stop():
     global kb
     if h:
@@ -97,9 +114,11 @@ def stop():
 
 menu_prompt = QAction("Open")
 menu_prompt.triggered.connect(prompt)
+menu_conf = QAction("Open Config")
+menu_conf.triggered.connect(open_conf)
 menu_quit = QAction("Quit")
 menu_quit.triggered.connect(stop)
-menu.addActions([menu_prompt,menu_quit])
+menu.addActions([menu_prompt,menu_conf,menu_quit])
 
 tray.setContextMenu(menu)
 tray.show()
