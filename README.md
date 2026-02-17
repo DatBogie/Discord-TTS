@@ -1,4 +1,4 @@
-<h1 align="center"><img src="./banner.png" width="400px"></h1>
+<h1 align="center"><img src="./banner.png" alt="Discord-TTS logo: The Discord logo wearing the Piper-TTS jester hat." width="400px"></h1>
 
 A simple python script that allows you to use TTS in a Discord (or other app's) VC via Soundux (or any other soundboard program that allows setting custom shortcuts).
 
@@ -25,11 +25,7 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
    - On [the repository page](https://github.com/DatBogie/Discord-TTS) (likely the page you're on right now), click the green "<> Code" button, then the "Download ZIP" button.
    - Extract the `Discord-TTS-main.zip` file to somewhere permanent (like your Documents folder).
 
-2. Run either `setup.sh` or `setup.bat` (only run `setup.bat` if you're on Windows).  
-   **If you'd like to change the TTS voice**:
-   - Open [the list of Piper-TTS voices](https://github.com/rhasspy/piper/blob/master/VOICES.md).
-   - On line 5 of whichever setup script (either `setup.sh` or `setup.bat`), replace `en_US-amy-medium` with your desired voice, following the format `<language>-<name>-<low/medium/high>`, where language is the text in parenthesis (eg. `en_US`) in the list.
-   - Make sure to follow step 2 in the Usage section, and change the value of `TTS Voice` on line 19 in `config.yaml`!
+2. Run either `setup.sh` or `setup.bat` (only run `setup.bat` if you're on Windows).
 
 ## Usage
 
@@ -38,16 +34,34 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 
 1. Run either `run.sh` or `run.bat` (only run `run.bat` on Windows). You will have to re-run the app upon closing it or upon restarting your computer for it to work.  
 
-2. Press the prompt hotkey (default: `CTRL+ALT+H`), enter anything (don't leave it blank), then press `ENTER` or click "Okay."
+2. Press the prompt hotkey (default: `CTRL+ALT+H`), enter anything (don't leave it blank), then press `ENTER` or click "OK."
 
 3. Open your soundboard app and add a new sound. If your soundboard supports adding a single file as a sound, then add `output.wav` (it'll be in the same folder this entire program is). Otherwise, add this entire program's folder.
 
 4. Add a custom shortcut/hotkey. By default, you should set it to `LEFT_CONTROL+LEFT_ALT+RIGHT_ALT+RIGHT_CONTROL` (press both control keys and both alt keys at the same time).  
    If you'd like to set this to something else, that's fine—just make sure to update `Soundboard Hotkey`'s value in `config.yaml`, too! (See the instructions below.)
 
-To configure this program:
+To change the TTS voice:
 
-1. Run the program, right click the tray icon, and click "Open Config." Alternatively, open `config.yaml` in a text editor.
+1. Run the program.
+
+2. Right-click the tray icon and select "Open Voice List." Find the voice you'd like, noting its language (in parenthesis), name, and mode (high/medium/low).
+
+3. Right-click the tray icon and select "Download Voice..." Type in the voice you'd like to download, in the format `<language>-<name>-<mode>`, and click "OK."
+
+4. Your new voice is automatically applied!
+
+To more conviniently switch between already downloaded voices:
+
+1. Either press the "Change Voice Hotkey" (default: `CTRL+ALT+V`) or right-click the tray icon and select "Change Voice..."
+
+2. Choose the voice from the dropdown menu and click "OK."  
+
+Changing your voice via either method will automatically update the `config.yaml` file. Note that this will also remove all comments from said file. You can always [view the default config file on GitHub](https://github.com/DatBogie/Discord-TTS/blob/main/config.yaml) for refrence!
+
+To otherwise configure this program:
+
+1. Run the program, right click the tray icon, and click "Open Config." Alternatively, manually open `config.yaml` in a text editor.
 
 2. Follow the instructions provided by the comments in the file.
 
