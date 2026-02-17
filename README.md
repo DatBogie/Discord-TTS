@@ -2,6 +2,10 @@
 
 A simple python script that allows you to use TTS in a Discord (or other app's) VC via Soundux (or any other soundboard program that allows setting custom shortcuts).
 
+> [!Warning]
+> While this program was designed to be cross-platform, it has only been tested on Linux (specifically Arch w/ KDE Plasma 6.5.5).  
+> Please [report any issues](https://github.com/DatBogie/Discord-TTS/issues) you encounter, especially on those other OSes!
+
 ## Requirements
 
 1. [Python 3](https://www.python.org/downloads/)\*
@@ -24,7 +28,7 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 
 3. Delete the old ZIP file.
 
-### Building from Source
+### Building/Using from Source
 
 1. Clone this repository.  
    If you have [`git`](https://git-scm.com/install/) installed:
@@ -38,6 +42,8 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
    - Extract the `Discord-TTS-main.zip` file to somewhere permanent (like your Documents folder).
 
 2. Run either `setup.sh` or `setup.bat` (only run `setup.bat` if you're on Windows).
+
+3. If you want to build from source (run from a binary rather than the raw python file), run `build.sh`, `build-mac.sh`, or `build.bat` (`build.bat` for Windows, `build-mac.sh` for macOS).
 
 ## Usage
 
