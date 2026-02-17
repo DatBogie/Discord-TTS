@@ -10,9 +10,8 @@ if getattr(sys,"frozen",False):
     DATA_PATH = os.path.dirname(sys.executable)
 else:
     DATA_PATH = os.path.dirname(os.path.abspath(__file__))
-# try:
-#     DATA_PATH = sys._MEIPASS
-# except:pass
+
+print(DATA_PATH)
 
 CONF_PATH = os.path.join(DATA_PATH,"config.yaml")
 
@@ -125,7 +124,7 @@ app.setQuitOnLastWindowClosed(False)
 bridge = Bridge()
 win = QWidget()
 win.hide()
-tray = QSystemTrayIcon(QIcon("Discord-TTS-tray.png"),parent=app)
+tray = QSystemTrayIcon(QIcon(os.path.join(DATA_PATH,"Discord-TTS-tray.png")),parent=app)
 menu = QMenu("Discord-TTS")
 if not os.path.exists(os.path.join(DATA_PATH,f"{TTS_VOICE}.onnx")):
     get_voice(TTS_VOICE)
