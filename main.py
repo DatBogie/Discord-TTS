@@ -50,12 +50,13 @@ if conf is None:
 PROMPT_HOTKEY = conf.get("Prompt Hotkey") or "<ctrl>+<alt>+h"
 QUIT_HOTKEY = conf.get("Quit Hotkey") or "<ctrl>+<alt>+x"
 VOICE_HOTKEY = conf.get("Change Voice Hotkey") or "<ctrl>+<alt>+v"
-SOUNDBOARD_HOTKEY = conf.get("Soundboard Hotkey").copy() or [
+SOUNDBOARD_HOTKEY = conf.get("Soundboard Hotkey") or [
     "ctrl_l",
     "alt_l",
     "ctrl_r",
     "alt_r"
 ]
+SOUNDBOARD_HOTKEY = SOUNDBOARD_HOTKEY.copy()
 TTS_VOICE = conf.get("TTS Voice") or "en_US-amy-medium"
 
 for i, k in enumerate(SOUNDBOARD_HOTKEY):
