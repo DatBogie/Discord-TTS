@@ -1,7 +1,4 @@
-<div style="display: flex; justify-content: center; align-items: center">
-   <img src="./Discord-TTS.png" width="60px">
-   <h1 style="margin: 0">Discord-TTS</h1>
-</div>
+<h1 align="center"><img src="./banner.png" width="400px"></h1>
 
 A simple python script that allows you to use TTS in a Discord (or other app's) VC via Soundux (or any other soundboard program that allows setting custom shortcuts).
 
