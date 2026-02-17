@@ -4,17 +4,27 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 
 ## Requirements
 
-1. [Python 3](https://www.python.org/downloads/)<span style="color: yellow">*</span>
+1. [Python 3](https://www.python.org/downloads/)\*
 
 2. Any soundboard program that allows setting custom shortcuts.  
    I personally use/recommend [Soundux](https://soundux.rocks/).
 
-<span style="color: yellow">*</span> *Only required when building from source.*
+\**Only required when building from source.*
 
 ## Installation/Setup
 
 > [!Important]
 > Ensure you have all of the necessary dependancies before following this guide!
+
+### Pre-compiled Binaries
+
+1. Download the correct ZIP from the [latest release](https://github.com/DatBogie/Discord-TTS/releases/latest) (or [any other release](https://github.com/DatBogie/Discord-TTS/releases)).
+
+2. Extract the ZIP to a location you'll remember.
+
+3. Delete the old ZIP file.
+
+### Building from Source
 
 1. Clone this repository.  
    If you have [`git`](https://git-scm.com/install/) installed:
@@ -34,16 +44,24 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 > [!Important]
 > If you change the value of `Soundboard Hotkey` in `config.yaml`, make sure to also update `output.wav`'s shortcut/hotkey in your soundboard app! (And vice-versa.)
 
-1. Run either `run.sh` or `run.bat` (only run `run.bat` on Windows). You will have to re-run the app upon closing it or upon restarting your computer for it to work.  
+### Running the Binary
 
-2. Press the prompt hotkey (default: `CTRL+ALT+H`), enter anything (don't leave it blank), then press `ENTER` or click "OK."
+1. Run the executable file (`Discord-TTS`/`Discord-TTS.app`/`Discord-TTS.exe`). You will have to re-run the app upon closing it or upon restarting your computer for it to work.
 
-3. Open your soundboard app and add a new sound. If your soundboard supports adding a single file as a sound, then add `output.wav` (it'll be in the same folder this entire program is). Otherwise, add this entire program's folder.
+### Running the Repository (No Binaries!)
 
-4. Add a custom shortcut/hotkey. By default, you should set it to `LEFT_CONTROL+LEFT_ALT+RIGHT_ALT+RIGHT_CONTROL` (press both control keys and both alt keys at the same time).  
+1. Run either `run.sh` or `run.bat` (only run `run.bat` on Windows). You will have to re-run the app upon closing it or upon restarting your computer for it to work.
+
+### General Instructions
+
+1. Press the prompt hotkey (default: `CTRL+ALT+H`), enter anything (don't leave it blank), then press `ENTER` or click "OK."
+
+2. Open your soundboard app and add a new sound. If your soundboard supports adding a single file as a sound, then add `output.wav` (it'll be in the same folder this entire program is). Otherwise, add this entire program's folder.
+
+3. Add a custom shortcut/hotkey. By default, you should set it to `LEFT_CONTROL+LEFT_ALT+RIGHT_ALT+RIGHT_CONTROL` (press both control keys and both alt keys at the same time).  
    If you'd like to set this to something else, that's fine—just make sure to update `Soundboard Hotkey`'s value in `config.yaml`, too! (See the instructions below.)
 
-To change the TTS voice:
+#### Changing the TTS Voice
 
 1. Run the program.
 
@@ -53,15 +71,16 @@ To change the TTS voice:
 
 4. Your new voice is automatically applied!
 
-To more conviniently switch between already downloaded voices:
+#### Conviniently Switching Between Already Downloaded Voices
 
 1. Either press the "Change Voice Hotkey" (default: `CTRL+ALT+V`) or right-click the tray icon and select "Change Voice..."
 
 2. Choose the voice from the dropdown menu and click "OK."  
 
-Changing your voice via either method will automatically update the `config.yaml` file. Note that this will also remove all comments from said file. You can always [view the default config file on GitHub](https://github.com/DatBogie/Discord-TTS/blob/main/config.yaml) for refrence!
+Changing your voice via either method will automatically update the `config.yaml` file.  
+**Note that this will also remove all comments from said file. You can always [view the default config file on GitHub](https://github.com/DatBogie/Discord-TTS/blob/main/config.yaml) for refrence!**
 
-To otherwise configure this program:
+#### Otherwise Configuring This Program
 
 1. Run the program, right click the tray icon, and click "Open Config." Alternatively, manually open `config.yaml` in a text editor.
 

@@ -133,21 +133,23 @@ def get_voice():
     t, r = QInputDialog.getText(win,"Discord-TTS","Enter voice name (<language>-<name>-<low/medium/high>):")
     if not r: return
     exists = os.path.exists(os.path.join(DATA_PATH,f"{t}.onnx"))
-    if sys.platform != "win32":
-        if not exists:
-            if not os.path.exists(os.path.join(DATA_PATH,".venv")):
-                if not os.path.exists(os.path.join(DATA_PATH,"requirements.txt")):
-                    with open(os.path.join(DATA_PATH,"requirements.txt"),"w") as f:
-                        f.write(
+    if not exists:
+        if not os.path.exists(os.path.join(DATA_PATH,".venv")):
+            if not os.path.exists(os.path.join(DATA_PATH,"requirements.txt")):
+                with open(os.path.join(DATA_PATH,"requirements.txt"),"w") as f:
+                    f.write(
 """piper-tts
 pynput
 PySide6
 PyYAML
 desktop""")
+        if sys.platform != "win32":
             subprocess.call(f"cd {DATA_PATH} && python3 -m venv .venv && . .venv/bin/activate && pip3 install -r requirements.txt", shell=True)
-        if exists or subprocess.call(f". .venv/bin/activate && python3 -m piper.download_voices {t}", shell=True) == 0:
-            upd_voice(t)
-            QMessageBox.information(win,"Discord-TTS",f"Successfully installed {t}!")
+        else:
+            subprocess.call(f"cd {DATA_PATH} && python -m venv .venv && call .venv\\Scripts\\activate.bat && pip3 install -r requirements.txt", shell=True)
+    if exists or (subprocess.call(f". .venv/bin/activate && python3 -m piper.download_voices {t}", shell=True) if sys.platform != "win32" else subprocess.call(f"call .venv\\Scripts\\activate.bat && python -m piper.download_voices {t}", shell=True)) == 0:
+        upd_voice(t)
+        QMessageBox.information(win,"Discord-TTS",f"Successfully installed {t}!")
 
 def sw_voice():
     voices = []
