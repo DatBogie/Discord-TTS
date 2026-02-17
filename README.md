@@ -4,10 +4,12 @@ A simple python script that allows you to use TTS in a Discord (or other app's) 
 
 ## Requirements
 
-1. [Python 3](https://www.python.org/downloads/)
+1. [Python 3](https://www.python.org/downloads/)<span style="color: yellow">*</span>
 
 2. Any soundboard program that allows setting custom shortcuts.  
    I personally use/recommend [Soundux](https://soundux.rocks/).
+
+<span style="color: yellow">*</span> *Only required when building from source.*
 
 ## Installation/Setup
 
